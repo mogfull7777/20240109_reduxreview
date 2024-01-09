@@ -30,7 +30,7 @@ const Board = () => {
             <td>
               <button
                 onClick={() => {
-                  dispatch(change());
+                  dispatch(change({ id: hero.id }));
                 }}
               >
                 변경하기

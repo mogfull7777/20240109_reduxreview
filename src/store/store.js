@@ -3,17 +3,16 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 let locallist = createSlice({
   name: "local",
   initialState: [
-    { id: 1, name: "Spiderman", point: 8 },
-    { id: 2, name: "Ironman", point: 3 },
-    { id: 3, name: "Captain America", point: 4 },
+    { id: 0, name: "Spiderman", point: 8 },
+    { id: 1, name: "Ironman", point: 3 },
+    { id: 2, name: "Captain America", point: 4 },
   ],
   reducers: {
-    change(state) {
-      return [
-        { id: 4, name: "Green Goblin", point: 4 },
-        { id: 5, name: "Mandarin", point: 6 },
-        { id: 6, name: "Red Skull", point: 6 },
-      ];
+    change(state, action) {
+      const { id } = action.payload;
+      return state.map((hero) =>
+        hero.id === id ? { ...hero, point: hero.point + 1 } : hero
+      );
     },
   },
 });
