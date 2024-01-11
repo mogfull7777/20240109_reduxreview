@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { change } from "../store/store";
 
 const Board = () => {
-  let herolist = useSelector((state) => state.herolist); // store에서 state가져올 수 있는 훅.
+  // useSelector = store 상태를 읽어와서 herolist 변수에 저장.
+  let herolist = useSelector((state) => state.herolist);
   console.log("herolist", herolist);
   console.log("herolist detail", herolist[1]);
 
+  // useDispatch = store에 정의된 액션을 dispatch.
   let dispatch = useDispatch();
 
   return (
@@ -30,6 +32,7 @@ const Board = () => {
             <td>
               <button
                 onClick={() => {
+                  // id는 hero.id로 사용.
                   dispatch(change({ id: hero.id }));
                 }}
               >
